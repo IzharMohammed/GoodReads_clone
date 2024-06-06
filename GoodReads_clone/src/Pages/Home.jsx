@@ -1,4 +1,7 @@
 import  Logo from 'Assets/goodRead.png'
+import { Link } from 'react-router-dom'
+import SignIn from './Auth/SignIn'
+import SignUp from './Auth/SignUp'
 export default function Home(){
     return(
         <>
@@ -17,8 +20,12 @@ export default function Home(){
                     </div>
 
                     <div>
-                    <button className='btn btn-accent rounded-lg m-4'>Register</button>
-                    <button className='btn btn-success rounded-lg'>Login</button>
+                    <button className='btn btn-accent rounded-lg m-4'>
+                    <Link to='/SignUp'>Register</Link>
+                    </button>
+                    <button className='btn btn-success rounded-lg'>
+                        <Link to='/SignIn'>LogIn</Link>
+                    </button>
                     </div>
                 </div>
             </div>
