@@ -1,7 +1,6 @@
 import  Logo from 'Assets/goodRead.png'
 import { Link } from 'react-router-dom'
-import SignIn from './Auth/SignIn'
-import SignUp from './Auth/SignUp'
+
 export default function Home(){
     return(
         <>
@@ -14,7 +13,7 @@ export default function Home(){
                 <div className=' flex  items-center justify-center gap-16 w-3/4 '> 
 
                     <div className='text-4xl text-center w-2/4 font-bold text-white'>
-                    <h1>Book Shelf</h1>
+                    <h1> Book Shelf</h1> 
                     <br />
                     <span className='text-violet-800'>  Your personal library and social network for bookworms</span>
                     </div>

@@ -1,11 +1,22 @@
 import { signUp } from "Redux/Slice/AuthSlice";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch ,useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import Layout from "../../Layouts/Layout";
 
 function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+const state = useSelector(state=>state.auth);
+
+
+
+useEffect(()=>{
+  if(state.isLoggedIn){
+    navigate("/Dashboard")
+  }
+},[])
+
   const [signUpDetails, setSignUpDetails] = useState({
     username: "",
     email: "",
@@ -41,8 +52,9 @@ function SignUp() {
   console.log("data", signUpDetails);
 
   return (
+    <Layout>
     <div>
-      <div className="flex flex-col items-center justify-center gap-12 h-[90vh] ">
+      <div className="flex flex-col items-center justify-center gap-12 h-[100vh] ">
         <div className="text-5xl text-white font-semibold">
           <h1>Sign UP</h1>
         </div>
@@ -103,6 +115,7 @@ function SignUp() {
         </form>
       </div>
     </div>
+    </Layout>
   );
 }
 

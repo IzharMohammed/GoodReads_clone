@@ -1,11 +1,19 @@
 import { signIn } from "Redux/Slice/AuthSlice";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState ,  useEffect  } from "react";
+import { useDispatch ,useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import Layout from "../../Layouts/Layout";
 
 function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+const state = useSelector(state=>state.auth);
+
+useEffect(()=>{
+  if(state.isLoggedIn){
+    navigate("/Dashboard")
+  }
+},[])
 
   const [signInDetails, setSignInDetails] = useState({
     email: "",
@@ -41,7 +49,8 @@ function resetForm(){
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-12 h-[90vh] ">
+    <Layout>
+    <div className="flex flex-col items-center justify-center gap-12 h-[90vh]  ">
       <div className="text-5xl text-white font-semibold">
         <h1>Login to your account</h1>
       </div>
@@ -90,6 +99,7 @@ function resetForm(){
         </form>
       </div>
     </div>
+    </Layout>
   );
 }
 
