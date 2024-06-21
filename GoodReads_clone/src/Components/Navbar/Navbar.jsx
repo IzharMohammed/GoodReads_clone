@@ -19,7 +19,7 @@ console.log('state',state);
   return (
     <div>
       <div className="flex justify-between m-8 p-8 border border-white h-[90px]">
-      <Link to='/Dashboard'><div className="btn btn-success text-white text-xl sm:text-xs p-2 mr-4">BookShelf</div></Link>
+      <Link to='/Dashboard'><div className="btn btn-success text-white text-xl ">BookShelf</div></Link>
         <div className="flex gap-12 text-white ">
           <div>Shelf</div>
           {
