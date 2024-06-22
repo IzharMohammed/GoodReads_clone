@@ -4,8 +4,9 @@ import { BsTwitterX } from "react-icons/bs";
 
 function Footer() {
   return (
-    <div className="relative mt-auto" >
-    <div className="flex border border-white absolute  bottom-0 justify-between p-8 h-[10vh] w-full   ">
+<div>
+<div className="relative mt-auto" >
+    <div className="flex border border-white absolute  bottom--10 justify-between p-8 h-[10vh] w-full   ">
       <section className="text-xl text-white"> Copyright 2023 | All rights reserved  </section>
       <section className=" flex gap-6 text-white  absolute right-4 ">
         {<FaInstagram />}
@@ -14,6 +15,7 @@ function Footer() {
       </section>
     </div>
     </div>
+</div>
   );
 }
 
