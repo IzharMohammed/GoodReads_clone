@@ -6,16 +6,9 @@ const initialState = {
     bookList: []
 }
 
+// Async thunk to get all books
 export const getAllBooks = createAsyncThunk('course/getAllBooks', async () => {
     try {
-        /* const response =await axiosInstance.get('books');
-        console.log('Response',response);
-
-        toast.promise(response, {
-            loading: 'Fetching books',
-            success: 'Successfully fetched books!!!',
-            error: "Something went wrong"
-        }); */
         const response = axiosInstance.get("books");
         console.log('Response', response);
 

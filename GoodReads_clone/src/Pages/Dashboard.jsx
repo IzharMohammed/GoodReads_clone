@@ -1,17 +1,20 @@
+//Component import
 import BookCard from "Components/BookCard";
+//Layout import
 import Layout from "../Layouts/Layout";
-import React, { useState,useEffect } from "react";
-import { getAllBooks } from "Redux/Slice/BookSlice";
+//React imports
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+//Redux imports
+import { getAllBooks } from "Redux/Slice/BookSlice";
 
 function Dashboard() {
+
   const dispatch = useDispatch()
   const state = useSelector(state=>state.books);
- // const[AllBooks , setAllBooks]= useState(null);
-  console.log('books data',state.bookList);
+
   const fetchBooks = async () =>{
       const response = await dispatch(getAllBooks());
-     // setAllBooks(response?.payload?.data?.data);
       console.log(response);
   }
   useEffect(()=>{
@@ -21,7 +24,7 @@ function Dashboard() {
   return (
     <>
       <Layout>
-        <div className="border border-green-500 min-h-[90vh] ">
+        <div className="min-h-[90vh] ">
           {
             state.bookList && state.bookList.map(book=>{
               return(
@@ -29,7 +32,6 @@ function Dashboard() {
               )
             })
           }
-     
         </div>
       </Layout>
     </>

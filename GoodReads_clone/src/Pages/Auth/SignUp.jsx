@@ -1,15 +1,18 @@
-import { signUp } from "Redux/Slice/AuthSlice";
+//React imports
 import React, { useEffect, useState } from "react";
 import { useDispatch ,useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+//Component imports
 import Layout from "../../Layouts/Layout";
+//Redux imports
+import { signUp } from "Redux/Slice/AuthSlice";
 
 function SignUp() {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 const state = useSelector(state=>state.auth);
-
-
 
 useEffect(()=>{
   if(state.isLoggedIn){
@@ -31,7 +34,6 @@ useEffect(()=>{
     });
   };
 
-  console.log("data", signUpDetails);
 
   function resetForm() {
     setSignUpDetails({
@@ -48,8 +50,6 @@ useEffect(()=>{
     navigate("/SignIn");
     resetForm();
   };
-
-  console.log("data", signUpDetails);
 
   return (
     <Layout>

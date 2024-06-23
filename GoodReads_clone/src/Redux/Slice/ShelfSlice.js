@@ -7,6 +7,7 @@ const initialState = {
     shelfList : []
 }
 
+// Async thunk to get all shelves
 export const getAllShelfs = createAsyncThunk('getAllShelfs',async ()=>{
 try {
     const response =  axiosInstance.get('bookshelves',{
@@ -23,9 +24,9 @@ try {
 } catch (error) {
     console.log(error);
 }
-
 }) 
 
+// Async thunk to add a book to shelf
 export const postShelf = createAsyncThunk('postShelf', async ({bookId,shelfId}) =>{
     try {
         console.log('book id ', bookId);

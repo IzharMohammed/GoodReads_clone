@@ -1,19 +1,26 @@
-import Layout from '../Layouts/Layout'
+//React imports
 import React, { useEffect } from 'react'
-import image from '../Assets/onePiece.jpeg'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
+//Layout imports
+import Layout from '../Layouts/Layout'
+//image imports
+import image from '../Assets/onePiece.jpeg';
+//Redux imports
 import { getAllShelfs } from 'Redux/Slice/ShelfSlice';
 import { postShelf } from 'Redux/Slice/ShelfSlice';
+//Material ui imports
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
 function BookDescription() {
+
 const {state}=useLocation();
 console.log(state);
 const navigate = useNavigate();
 const shelfState = useSelector(state => state.shelf);
 const dispatch = useDispatch();
+
 const loadShelves = () =>{
   dispatch(getAllShelfs())
 }
@@ -22,11 +29,9 @@ useEffect(()=>{
   loadShelves();
 },[])
 
-
   return (
     <Layout>
-    <div className=' h-[140vh]  flex gap-8 w-3/4 m-auto'>
-
+    <div className=' h-[110vh]  flex gap-8 w-3/4 m-auto'>
     <div className=' h-[80vh] mt-12 flex gap-8 w-[160vh] ml-30 px-4 bg-gray-800  '>
     <div className='my-16 '>
         <img className='h-[65vh] max-w-[65vh]' src={image} alt="" />
@@ -61,8 +66,6 @@ useEffect(()=>{
             </details>
         </div>
     </div>
-
-     
     </div>
     </Layout>
   )
