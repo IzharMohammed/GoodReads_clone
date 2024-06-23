@@ -29,7 +29,7 @@ function Dashboard() {
               )
             })
           }
-          <BookCard />
+     
         </div>
       </Layout>
     </>

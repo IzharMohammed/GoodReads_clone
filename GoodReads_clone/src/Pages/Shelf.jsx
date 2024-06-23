@@ -1,21 +1,38 @@
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../Layouts/Layout";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllShelfs } from "Redux/Slice/ShelfSlice";
-
+import image from "../Assets/onePiece.jpeg"
 function Shelf() {
 const shelfState = useSelector(state => state.shelf);
+const[books,setBooks]=useState([]);
 
 const dispatch = useDispatch();
-const loadShelves = () =>{
-  dispatch(getAllShelfs())
+const loadShelves =async  () =>{
+  const response = await dispatch(getAllShelfs())
+/*   console.log(response?.payload?.data?.data);
+  console.log(response?.payload?.data?.data[0].books);
+  console.log(response?.payload?.data?.data[0].name); */
+
 }
 
 useEffect(()=>{
   loadShelves();
 },[])
 
-console.log(shelfState);
+const handleShelfs =(shelf)=>{
+  console.log(shelf);
+  shelfState.shelfList.forEach(shelf=>{
+    if(shelf._id==shelf.id){
+      setBooks(shelf.books)
+    }
+  })
+  setBooks(shelf.books);
+}
+
+console.log('books',books);
+
+console.log(shelfState.shelfList);
   return (
     <Layout>
       <div>
@@ -23,7 +40,7 @@ console.log(shelfState);
             <div className="m-8 flex justify-around ">
               {
                   shelfState.shelfList && shelfState.shelfList.map(shelf=>(
-                    <div className="btn btn-accent">{shelf.name}</div>
+                    <div className="btn btn-accent" onClick={()=> handleShelfs(shelf)}>{shelf.name}</div>
                   ))
               }
             </div>
@@ -34,45 +51,54 @@ console.log(shelfState);
                 <tr>
                   <th></th>
                   <th className="text-xl text-white">Name</th>
-                  <th className="text-xl text-white">Job</th>
+                  <th className="text-xl text-white">Description</th>
                   {/*   <th>Favorite Color</th> */}
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 {/* row 1 */}
-                <tr>
-                  <th></th>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
-                            alt="Avatar Tailwind CSS Component"
-                          />
+                {
+                  books.length>0 && books.map(book=>
+                    (
+                      <tr>
+                      <th></th>
+                      <td>
+                        <div className="flex items-center gap-3">
+                          <div className="avatar">
+                            <div className="mask mask-squircle w-14 h-14">
+                              <img
+                                src={image}
+                                alt="Avatar Tailwind CSS Component"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-bold text-white">{book.title}</div>
+                            <div className=" text-white text-sm  ">Pages :- {book.pages}</div>
+                           <div> {book.publishDate}</div>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="font-bold text-white">Hart Hagerty</div>
-                        <div className=" text-white text-sm  ">United States</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="text-white">
-                    Zemlak, Daniel and Leannon
-                    <br />
-                    <span className="badge badge-ghost badge-sm text-white">
-                      Desktop Support Technician
-                    </span>
-                  </td>
-
-                  <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
-                  </th>
-                </tr>
+                      </td>
+                      <td className="text-white">
+                       {book.description}
+                        <br />
+                        <span className="badge badge-ghost badge-sm text-white">
+                          Desktop Support Technician
+                        </span>
+                      </td>
+    
+                      <th>
+                        <button className="btn btn-primary">details</button>
+                      </th>
+                    </tr> 
+                    )
+                  )
+                }
+                
+         
                 {/* row 2 */}
-                <tr>
+     {/*            <tr>
                   <th></th>
                   <td>
                     <div className="flex items-center gap-3">
@@ -101,9 +127,9 @@ console.log(shelfState);
                   <th>
                     <button className="btn btn-ghost btn-xs">details</button>
                   </th>
-                </tr>
+                </tr> */}
                 {/* row 3 */}
-                <tr>
+ {/*                <tr>
                   <th></th>
                   <td>
                     <div className="flex items-center gap-3">
@@ -132,9 +158,9 @@ console.log(shelfState);
                   <th>
                     <button className="btn btn-ghost btn-xs">details</button>
                   </th>
-                </tr>
+                </tr> */}
                 {/* row 4 */}
-                <tr>
+    {/*             <tr>
                   <th></th>
                   <td>
                     <div className="flex items-center gap-3">
@@ -163,18 +189,8 @@ console.log(shelfState);
                   <th>
                     <button className="btn btn-ghost btn-xs">details</button>
                   </th>
-                </tr>
+                </tr> */}
               </tbody>
-              {/* foot */}
-              {/*  <tfoot>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
-      </tr>
-    </tfoot> */}
             </table>
           </div>
         </div>

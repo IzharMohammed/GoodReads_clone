@@ -4,7 +4,6 @@ import { FaRegUser } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 function BookCard({data}) {
     const navigate = useNavigate();
-console.log('cBookard',data&&data.description);
   return (
     data && 
     <div className='w-full h-[40vh] mb-12 mt-4 '>

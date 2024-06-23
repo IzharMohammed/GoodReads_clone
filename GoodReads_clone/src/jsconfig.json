@@ -9,7 +9,7 @@
             "Pages/*" : ["./src/Pages/*"],
             "Redux/*" : ["./src/Redux/*"],
             "Routes/*" : ["./src/Routes/*"],
-
+           
 
         }
     }

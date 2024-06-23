@@ -1,17 +1,18 @@
 import { logout } from "Redux/Slice/AuthSlice";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
 
 const dispatch = useDispatch();
-
+const navigate = useNavigate()
 const state = useSelector(state=>state.auth);
 
 
   function handleLogout(){
     dispatch(logout())
+    navigate('/')
   }
 
   return (
@@ -24,21 +25,20 @@ const state = useSelector(state=>state.auth);
          state.isLoggedIn &&    <div>{state.username}</div>
           }
 
+
           <ul>
             <details>
-              <summary>options</summary>
-
-          
+              <summary className="mb-2">options</summary>
              {
-              state.isLoggedIn &&    <li className="cursor-pointer" onClick={handleLogout}> Logout</li>
+              state.isLoggedIn &&    <li className="cursor-pointer btn btn-error" onClick={handleLogout}> Logout</li>
              }
              {
               !state.isLoggedIn &&
-              <li> <Link to="/SignUp">Sign up</Link> </li>
+              <li className="btn btn-success"> <Link to="/SignUp">Sign up</Link> </li>
              }
               {
               !state.isLoggedIn &&
-              <li><Link to="/SignIn">sign in</Link></li>
+              <li className="btn btn-success"><Link to="/SignIn">sign in</Link></li>
              }
   
             </details>

@@ -1,9 +1,11 @@
 import  Logo from 'Assets/goodRead.png'
+import Layout from '../Layouts/Layout'
 import { Link } from 'react-router-dom'
 
 export default function Home(){
     return(
         <>
+        <Layout>
             <div className=' flex flex-col items-center justify-center gap-24   h-[100vh]'>
 
                 <div  className='w-48 h-48'>
@@ -28,6 +30,7 @@ export default function Home(){
                     </div>
                 </div>
             </div>
+            </Layout>
         </>
     )
 }
